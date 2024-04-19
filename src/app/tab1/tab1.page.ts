@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
+  pass = ''
+  email = ''
+
   constructor() {}
 
+  login(){
+    console.log( this.email + ' ' + this.pass )
+  }
 }

@@ -1,17 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
-    </ion-title>
+      Inicio de sesion
+    </ion-title> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-text class="ion-padding">
+      <h1>Iniciar sesion</h1>
+    </ion-text>
+  </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-item>
+    <ion-input label="E-Mail" type="email" [(ngModel)]="this.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Clave" type="password" [(ngModel)]="this.pass"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="login()">
+      Iniciar sesion
+    </ion-button>
+  </ion-item>
 </ion-content>
