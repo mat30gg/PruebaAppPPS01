@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="form-registro center">
+    <form [formGroup]="this.formRegister">
+      <ion-input formControlName="email" label="E-Mail:"></ion-input>
+      <ion-input formControlName="name" label="Nombre:"></ion-input>
+      <ion-input formControlName="pass" label="Contraseña:" type="password"></ion-input>
+      <ion-input formControlName="confirmPass" label="Confirmar contraseña:" type="password"></ion-input>
+      <ion-select label="Sexo:" interface="popover" formControlName="gender">
+        <ion-select-option [value]="'m'">Masculino</ion-select-option>
+        <ion-select-option [value]="'f'">Femenino</ion-select-option>
+      </ion-select>
+      <ion-button (click)="registrar()" [disabled]="this.formRegister.invalid" class="boton-registro">Registrarse</ion-button>
+    </form>
+  </div>
+</ion-content>

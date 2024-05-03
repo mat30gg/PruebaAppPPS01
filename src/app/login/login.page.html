@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Inicio de sesion</ion-title> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="contenido-login">
+    <div class="form-login">
+      <form [formGroup]="this.formlogin">
+        <ion-input label="E-Mail" type="email" formControlName="email"></ion-input>
+        <ion-input label="Clave" type="password" formControlName="pass"></ion-input>
+      </form>
+      <ion-button (click)="login()" [disabled]="this.formlogin.invalid" color="secondary">Iniciar sesion</ion-button>
+    </div>
+  
+    <ion-text>
+      No tienes cuenta? 
+      <a routerLink="/register">registrate</a>
+    </ion-text>
+  </div>
+
+  <ion-alert
+    [isOpen]="alertOpen"
+    message="{{alertMessage}}"
+    [buttons]="alertButtons"
+    (didDismiss)="alertOpen = false"
+  ></ion-alert>
+</ion-content>

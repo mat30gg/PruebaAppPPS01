@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pps-01-4ac3c": {
+      "hosting": {
+        "app": [
+          "pps-01-4ac3c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pps-01-4ac3c"
+  }
+}
