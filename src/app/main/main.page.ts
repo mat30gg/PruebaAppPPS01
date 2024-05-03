@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FirebaseAuthService } from '../services/firebase-auth.service';
 import { Router } from '@angular/router';
 import { Auth, getAuth, updateCurrentUser, updateProfile } from '@angular/fire/auth';
@@ -10,23 +10,18 @@ import { Auth, getAuth, updateCurrentUser, updateProfile } from '@angular/fire/a
 })
 export class MainPage implements OnInit {
 
-  public nombre = "";
-
   constructor( 
     public firebaseAuthService: FirebaseAuthService,
     public router: Router
   ) { }
 
   ngOnInit() {
-    if( !this.firebaseAuthService.getFirebaseUser() ) {
-      this.router.navigateByUrl('')
-    } else {
-      this.router.navigateByUrl('main')
-    }
+    return
   }
   
   logout() {
     this.firebaseAuthService.logout()
+    this.router.navigateByUrl('')
   }
 
 }

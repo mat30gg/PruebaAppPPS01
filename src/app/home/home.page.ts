@@ -10,10 +10,13 @@ import { Router } from '@angular/router';
 })
 export class HomePage  {
 
-  constructor( public fireServ: FirebaseAuthService ) { }
+  constructor( 
+    public fireServ: FirebaseAuthService,
+    public router: Router 
+  ) { }
 
   logout() {
     this.fireServ.logout()
-    inject(Router).navigateByUrl('')
+    this.router.navigateByUrl('')
   }
 }
