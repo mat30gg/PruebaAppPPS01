@@ -14,6 +14,8 @@ import { FirebaseError } from '@angular/fire/app';
 })
 export class LoginPage {
 
+  public cargandoLogin = false;
+
   formlogin : FormGroup
 
   usersArray:any[] = [];
@@ -46,7 +48,9 @@ export class LoginPage {
     let email = this.formlogin.get('email')?.value
     let pass = this.formlogin.get('pass')?.value
     try {
+      this.cargandoLogin = true
       await signInWithEmailAndPassword(this.auth, email, pass)
+
       this._snackBar.open("Iniciando sesion...",'', {
         duration: 2000,
         panelClass: ['snackbar-success']
@@ -54,12 +58,21 @@ export class LoginPage {
       setTimeout(() => {
         this.router.navigate(['main'])
       }, 2000);
+
+      this.cargandoLogin = false
     } catch (error : any) {
       this._snackBar.open("Credenciales incorrectas",'', {
         duration: 2000,
         panelClass: ['snackbar-danger']
       })
     }
+  }
+
+  cargarDatosPrueba1() {
+    this.formlogin.setValue({
+      email: "usuario@usuario.com",
+      pass: "333333"
+    })
   }
 
 }

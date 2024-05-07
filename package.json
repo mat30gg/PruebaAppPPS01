@@ -9,7 +9,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "telefono": "npx cap run --target 520056145929457d android"
   },
   "private": true,
   "dependencies": {

@@ -14,10 +14,12 @@ export class RegisterPage {
 
   public formRegister: FormGroup;
 
+  public cargandoRegistro = false;
+
   constructor( 
     public auth: Auth,
     private _snackBar: MatSnackBar,
-    private fireAuthServ: FirebaseAuthService
+    public router: Router
   ) { 
     let formBuilder = new FormBuilder()
     this.formRegister = formBuilder.group(
@@ -53,8 +55,10 @@ export class RegisterPage {
 
   async registrar() {
     if( this.formRegister.valid ) {
+
+      this.cargandoRegistro = true;
       await this.registrarUsuario()
-      inject(Router).navigateByUrl('')
+      this.cargandoRegistro = false;
     }
   }
   
@@ -67,8 +71,25 @@ export class RegisterPage {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, nuevoUsuario.email, nuevoUsuario.pass);
       updateProfile(userCredential.user, { displayName: this.formRegister.get('nombre')?.value });
-    } catch (error) {
-      console.log(error);
+      this.router.navigateByUrl('')
+      
+    } catch (error:any) {
+      console.log(error.code);
+      const errorMessage = error.message;
+      this._snackBar.open(errorMessage,'', {
+        duration: 2000,
+        panelClass: ['snackbar-danger']
+      })
     }
+  }
+
+  cargarDatosPrueba1() {
+    this.formRegister.setValue({
+      email: "usuario@usuario.com",
+      name: "Usuario",
+      pass: "333333",
+      confirmPass: "333333",
+      gender: "m"
+    })
   }
 }

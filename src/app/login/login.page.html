@@ -1,5 +1,9 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Inicio de sesion</ion-title> 
   </ion-toolbar>
 </ion-header>
@@ -8,6 +12,9 @@
 
   <div class="contenido-login">
     <div class="form-login">
+      <div  *ngIf=" this.cargandoLogin" class="spinner">
+        <ion-spinner color="dark"></ion-spinner>
+      </div>
       <form [formGroup]="this.formlogin">
         <ion-input label="E-Mail" type="email" formControlName="email"></ion-input>
         <ion-input label="Clave" type="password" formControlName="pass"></ion-input>
@@ -21,10 +28,15 @@
     </ion-text>
   </div>
 
-  <ion-alert
-    [isOpen]="alertOpen"
-    message="{{alertMessage}}"
-    [buttons]="alertButtons"
-    (didDismiss)="alertOpen = false"
-  ></ion-alert>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="bug-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="cargarDatosPrueba1()">
+        <ion-icon name="person-outline"></ion-icon>
+        1
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

@@ -5,14 +5,15 @@
     </ion-toolbar>
   </ion-header>
 </ion-menu>
+
 <div class="ion-page" id="main-content">
   <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
-          <div *ngIf="this.firebaseAuthService.getFirebaseUser()" >
-            <ion-button (click)="this.logout()">Cerrar sesion</ion-button>
-          </div>
+        <div *ngIf="this.firebaseAuthService.getFirebaseUser()" >
+          <ion-button (click)="this.logout()">Cerrar sesion</ion-button>
+        </div>
       </ion-buttons>
       <ion-title>Pagina principal de {{ this.firebaseAuthService.userLogged?.displayName }}</ion-title>
     </ion-toolbar>
