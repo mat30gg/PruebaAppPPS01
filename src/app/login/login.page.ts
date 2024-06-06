@@ -56,6 +56,7 @@ export class LoginPage {
         panelClass: ['snackbar-success']
       })
       setTimeout(() => {
+        this.formlogin.reset({email: '', pass: ''})
         this.router.navigate(['main'])
       }, 2000);
 

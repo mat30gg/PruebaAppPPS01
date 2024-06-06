@@ -70,7 +70,7 @@ export class RegisterPage {
     }
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, nuevoUsuario.email, nuevoUsuario.pass);
-      updateProfile(userCredential.user, { displayName: this.formRegister.get('nombre')?.value });
+      updateProfile(userCredential.user, { displayName: nuevoUsuario.nombre });
       this.router.navigateByUrl('')
       
     } catch (error:any) {
