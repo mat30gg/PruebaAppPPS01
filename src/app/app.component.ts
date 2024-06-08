@@ -36,6 +36,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     SplashScreen.hide()
-    this.router.navigateByUrl('splash')
+    //this.router.navigateByUrl('splash')
   }
 }

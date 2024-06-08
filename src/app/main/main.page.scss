@@ -1,0 +1,40 @@
+$primario: var(--ion-color-primary);
+
+.rainbow-text {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+}
+
+ion-fab-button {
+   --background: var(--ion-color-primary);
+   --color: black;
+   
+}
+
+.fab-button-disabled {
+   --background: rgba(95, 95, 95, 0.5);
+   filter: grayscale(100%);
+ }
+
+.fab-ingles {
+   --background: no-repeat center/200% url('/assets/images/bandera_uk.png');
+}
+
+.fab-portugues {
+   --background: no-repeat center/170% url('/assets/images/bandera_brasil.png');
+}
+
+.fab-espanol {
+   --background: no-repeat center/200% url('/assets/images/bandera_espania.png');
+}
+
+.fab-numeros {
+   --background: no-repeat center/600% url('/assets/images/numeros.jpg');
+}
+
+.fab-animales {
+   --background: no-repeat center/170% url('/assets/images/animales.jpg');
+}
+
+.fab-colores {
+   --background: no-repeat center/170% url('/assets/images/colores.jpg');
+}

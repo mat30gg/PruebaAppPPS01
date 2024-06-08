@@ -3,9 +3,9 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'PPS01',
+  appId: 'io.mateo.idiomas',
   webDir: 'www',
+  appName: 'Tabla didactica de idiomas para niños',
   plugins: {
     SplashScreen: {
       launchAutoHide: false,

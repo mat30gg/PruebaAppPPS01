@@ -5,26 +5,61 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
+  
 
   <div class="contenido-login">
-    <div class="form-login">
-      <form [formGroup]="this.formlogin">
-        <ion-input label="E-Mail" type="email" formControlName="email"></ion-input>
-        <ion-input label="Clave" type="password" formControlName="pass"></ion-input>
-      </form>
-      <ion-button (click)="login()" [disabled]="this.formlogin.invalid" color="secondary">Iniciar sesion</ion-button>
+    <div  *ngIf=" this.cargandoLogin" class="spinner">
+      <ion-spinner color="dark"></ion-spinner>
     </div>
-  
-    <ion-text>
-      No tienes cuenta? 
+    <div class="form-box">
+
+
+      <form [formGroup]="this.formlogin" class="form">
+        <ion-text>
+          <h1 class="titulo">Iniciar sesion</h1>
+        </ion-text>
+        <ion-input
+         label="Correo"
+         fill="solid"
+         type="email"
+         formControlName="email"
+         helperText="Ingrese un correo valido"
+         errorText="Correo invalido"
+        ></ion-input>
+        <ion-input 
+        label="Clave" 
+        fill="solid" 
+        type="password" 
+        formControlName="pass"
+        >
+          <ion-input-password-toggle slot="end" color="dark"></ion-input-password-toggle>
+        </ion-input>
+        <ion-button 
+        (click)="login()" 
+        [disabled]="this.formlogin.invalid" 
+        color="secondary" 
+        class="boton-login">
+        Iniciar sesion
+        </ion-button>
+
+      </form>
+      <ion-text>
+        No tienes cuenta? 
+      </ion-text>
       <a routerLink="/register">registrate</a>
-    </ion-text>
+    </div>
   </div>
 
-  <ion-alert
-    [isOpen]="alertOpen"
-    message="{{alertMessage}}"
-    [buttons]="alertButtons"
-    (didDismiss)="alertOpen = false"
-  ></ion-alert>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="bug-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="cargarDatosPrueba1()">
+        <ion-icon name="person-outline"></ion-icon>
+        1
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

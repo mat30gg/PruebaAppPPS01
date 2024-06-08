@@ -6,7 +6,26 @@ import { MainPage } from './main.page';
 const routes: Routes = [
   {
     path: '',
-    component: MainPage
+    redirectTo: 'colores',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    component: MainPage,
+    children: [
+      {
+        path: 'colores',
+        loadChildren: () => import('../contenido-app/colores/colores.module').then( m => m.ColoresPageModule)
+      },
+      {
+        path: 'animales',
+        loadChildren: () => import('../contenido-app/animales/animales.module').then( m => m.AnimalesPageModule)
+      },
+      {
+        path: 'numeros',
+        loadChildren: () => import('../contenido-app/numeros/numeros.module').then( m => m.NumerosPageModule)
+      }
+    ]
   }
 ];
 

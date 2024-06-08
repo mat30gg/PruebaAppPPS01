@@ -7,13 +7,9 @@ import { Auth, User, getAuth, onAuthStateChanged, sendPasswordResetEmail, signIn
 export class FirebaseAuthService {
 
   public uId: any = -1;
-  public userLogged: User | null = null;
+  public userLogged: User | null = this.auth.currentUser;
 
   constructor( private auth: Auth) { }
-
-  getFirebaseUser() {
-    return this.auth.currentUser
-  }
 
   logout() {
     signOut(this.auth)
