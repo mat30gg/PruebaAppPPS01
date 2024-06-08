@@ -1,28 +1,42 @@
-<ion-menu contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-menu>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Carga credito</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<div class="ion-page" id="main-content">
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        <div *ngIf="this.firebaseAuthService.getFirebaseUser()" >
-          <ion-button (click)="this.logout()">Cerrar sesion</ion-button>
+<ion-content [fullscreen]="true">
+  <div class="h100 flex flex-column">
+    <div *ngIf="this.usrCreditos.cargandoDatos || this.cargando" class="spinner">
+      <ion-spinner name="dots"></ion-spinner>
+    </div>
+    <div class="contenedor-credito">
+      <ion-text><h1>Credito:</h1></ion-text>
+      <div class="cont-txtCredito txtCredito">
+        <ion-text #creditosCountUp [countUp]="this.credito">0</ion-text>
+        <span>$</span>
+      </div>
+    </div>
+    <div class="contenedor-scan flex flex11">
+      <ion-button class="flex flex-column flex11" (click)="escanearCodigo()" color="tertiary">
+        <div class="flex flex-column">
+          <ion-text class="btnText">Escanear QR</ion-text>
+          <ion-icon class="btnIcon" slot="icon-only" name="qr-code-outline"></ion-icon>
         </div>
-      </ion-buttons>
-      <ion-title>Pagina principal de {{ this.firebaseAuthService.userLogged?.displayName }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      </ion-button>
+    </div>
+  </div>
   
-  <ion-content [fullscreen]="true">
-    <ion-text class="title">
-      <h1>Bienvenido</h1>
-      <h4>{{this.firebaseAuthService.userLogged?.displayName}}</h4>
-    </ion-text>
-  </ion-content>
-</div>
+  <ion-fab slot="fixed" horizontal="end" vertical="top" [edge]="true">
+    <ion-fab-button>
+      <ion-icon name="list-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button color="primary">
+        <ion-icon name="log-out-outline" (click)="logout()"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="primary">
+        <ion-icon name="trash-outline" (click)="limpiarCredito()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

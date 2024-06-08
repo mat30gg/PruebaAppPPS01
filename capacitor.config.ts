@@ -3,13 +3,13 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'PPS01',
+  appId: 'io.mateo.credito',
+  appName: 'Carga de credito',
   webDir: 'www',
   plugins: {
     SplashScreen: {
       launchAutoHide: false,
-      backgroundColor: '#5b1c1c',
+      backgroundColor: '#5D7038',
     }
   }
 };

@@ -16,14 +16,15 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'main',
+    path: '',
     canActivate: [userLoggedGuard],
     loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
   },
   {
-    path: '',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: ''
+  }
 ];
 @NgModule({
   imports: [

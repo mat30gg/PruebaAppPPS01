@@ -10,22 +10,25 @@
 
 <ion-content [fullscreen]="true">
 
-  <div class="contenido-login">
-    <div class="form-login">
-      <div  *ngIf=" this.cargandoLogin" class="spinner">
-        <ion-spinner color="dark"></ion-spinner>
+  <div class="pagina patron-fondo">
+    <div class="contenido-login">
+      <div class="form-login">
+        <div  *ngIf=" this.cargandoLogin" class="spinner">
+          <ion-spinner color="dark"></ion-spinner>
+        </div>
+        <div class="titulo "><h1 [class]="'animate__animated ' + this.animacionClase_titulo" (animationend)="this.animacionClase_titulo = ''">Ingrese su cuenta</h1></div>
+        <form [formGroup]="this.formlogin" class="inputs-login">
+          <ion-input type="email" formControlName="email" fill="solid" labelPlacement="floating" label="Correo">
+            <ion-icon name="mail-sharp" slot="start" aria-hidden="true"></ion-icon>
+          </ion-input>
+          <ion-input label="Clave" type="password" formControlName="pass" fill="solid" labelPlacement="stacked">
+            <ion-icon name="lock-closed-sharp" slot="start" aria-hidden="true"></ion-icon>
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </form>
+        <ion-button (click)="login()" [disabled]="this.formlogin.invalid" color="secondary" class="btnLogin">Iniciar sesion</ion-button>
       </div>
-      <form [formGroup]="this.formlogin">
-        <ion-input label="E-Mail" type="email" formControlName="email"></ion-input>
-        <ion-input label="Clave" type="password" formControlName="pass"></ion-input>
-      </form>
-      <ion-button (click)="login()" [disabled]="this.formlogin.invalid" color="secondary">Iniciar sesion</ion-button>
     </div>
-  
-    <ion-text>
-      No tienes cuenta? 
-      <a routerLink="/register">registrate</a>
-    </ion-text>
   </div>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
@@ -33,9 +36,17 @@
       <ion-icon name="bug-outline"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button (click)="cargarDatosPrueba1()">
-        <ion-icon name="person-outline"></ion-icon>
+      <ion-fab-button (click)="cargarDatosPrueba('admin@admin.com', '111111')" color="primary">
+        <ion-icon name="person"></ion-icon>
         1
+      </ion-fab-button>
+      <ion-fab-button (click)="cargarDatosPrueba('invitado@invitado.com', '222222')" color="primary">
+        <ion-icon name="person"></ion-icon>
+        2
+      </ion-fab-button>
+      <ion-fab-button (click)="cargarDatosPrueba('usuario@usuario.com', '333333')" color="primary">
+        <ion-icon name="person"></ion-icon>
+        3
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>

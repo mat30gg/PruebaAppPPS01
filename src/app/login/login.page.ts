@@ -1,11 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, user } from '@angular/fire/auth';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component} from '@angular/core';
+import { Auth, signInWithEmailAndPassword} from '@angular/fire/auth';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SplashScreen } from '@capacitor/splash-screen';
 import { FirebaseAuthService } from '../services/firebase-auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FirebaseError } from '@angular/fire/app';
 
 @Component({
   selector: 'app-tab1',
@@ -26,13 +24,18 @@ export class LoginPage {
   public alertOpen : boolean
   public alertButtons : Array<any> = []
 
+  public animacionClase_titulo = ''
 
   constructor(
     private auth : Auth, 
     private router : Router,
-    private fireAuthServ: FirebaseAuthService,
     private _snackBar: MatSnackBar
   ) {
+
+    setInterval(() => {
+      this.animacionClase_titulo = 'animate__bounce animate__slow'
+    }, 4000)
+
     let formbuilder = new FormBuilder()
     this.formlogin = formbuilder.group({
       email: ["", Validators.required],
@@ -57,7 +60,7 @@ export class LoginPage {
       })
       setTimeout(() => {
         this.formlogin.reset({email: '', pass: ''})
-        this.router.navigate(['main'])
+        this.router.navigate([''])
       }, 2000);
 
       this.cargandoLogin = false
@@ -69,10 +72,10 @@ export class LoginPage {
     }
   }
 
-  cargarDatosPrueba1() {
+  cargarDatosPrueba(email: string, pass: string) {
     this.formlogin.setValue({
-      email: "usuario@usuario.com",
-      pass: "333333"
+      email: email,
+      pass: pass
     })
   }
 

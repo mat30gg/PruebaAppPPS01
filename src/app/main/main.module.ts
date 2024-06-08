@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { MainPageRoutingModule } from './main-routing.module';
 
 import { MainPage } from './main.page';
+import { ConteoAnimadoDirective } from '../directivas/conteo-animado.directive';
+import { CountUpModule } from 'ngx-countup';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MainPageRoutingModule
+    MainPageRoutingModule,
+    ConteoAnimadoDirective,
+    CountUpModule,
   ],
   declarations: [MainPage]
 })

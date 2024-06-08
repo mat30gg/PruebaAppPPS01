@@ -11,6 +11,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { CountUpModule } from 'ngx-countup';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    CountUpModule,
     IonicModule.forRoot(), 
-    AppRoutingModule, 
-    IonicModule.forRoot({}), 
-    provideFirebaseApp(() => initializeApp({"projectId":"pps-01-4ac3c","appId":"1:970078539288:web:810a3062c38fc43abfbd6d","storageBucket":"pps-01-4ac3c.appspot.com","apiKey":"AIzaSyCUmDHvD7xhQKK5yFSgh8HtRNlMgwZ4P1A","authDomain":"pps-01-4ac3c.firebaseapp.com","messagingSenderId":"970078539288"})), 
+    AppRoutingModule, provideFirebaseApp(() => initializeApp({"projectId":"pps-01-4ac3c","appId":"1:970078539288:web:6d7000a8f23ba2f8bfbd6d","storageBucket":"pps-01-4ac3c.appspot.com","apiKey":"AIzaSyCUmDHvD7xhQKK5yFSgh8HtRNlMgwZ4P1A","authDomain":"pps-01-4ac3c.firebaseapp.com","messagingSenderId":"970078539288"})), 
+    provideAuth(() => getAuth()), 
     provideFirestore(() => getFirestore()), 
-    provideAuth(() => getAuth())
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

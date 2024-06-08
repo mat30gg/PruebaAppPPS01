@@ -6,7 +6,7 @@ import { Auth, User, getAuth, onAuthStateChanged, sendPasswordResetEmail, signIn
 })
 export class FirebaseAuthService {
 
-  public uId: any = -1;
+  public uId: any = null;
   public userLogged: User | null = null;
 
   constructor( private auth: Auth) { }

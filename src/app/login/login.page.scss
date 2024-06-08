@@ -1,7 +1,11 @@
 .form-login {
     background-color: var(--ion-color-primary);
-    padding: 5%;
-    border-radius: 5%;
+    padding: 5% 10%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 }
 
 .contenido-login {
@@ -13,6 +17,31 @@
     transform: translate(0, -50%);
 }
 
+.titulo {
+    text-align: center;
+}
+
+.inputs-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.btnLogin {
+    margin: auto 20%;
+}
+
 ion-fab {
     margin-bottom: var(--ion-safe-area-bottom, 0);
+}
+
+.pagina {
+    width: 100%;
+    height: 100%;
+}
+
+.patron-fondo {
+    background-color: #5d7038;
+    opacity: 0.9;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #5d7038 40px ), repeating-linear-gradient( #00000055, #000000 );
 }
