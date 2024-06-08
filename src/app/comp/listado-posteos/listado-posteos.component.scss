@@ -1,0 +1,39 @@
+.unidad-posteo {
+    min-height: 30rem;
+    height: max-content;
+    border: 0.1rem solid var(--ion-color-secondary);
+    padding: 0.7rem;
+    padding-bottom: 1rem;
+    margin: 2.3rem auto;
+    background-color: color-mix(in srgb, var(--ion-background-color), #000 25%);
+    position: relative;
+
+
+    .container-imagen-post {
+        position: relative;
+    }
+
+    .sector-fav {
+        background-color: rgba(99, 99, 99, 0.6);
+        position: absolute;
+        top: 1%;
+        right: 1%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 4px 2px;
+        border-radius: 10%;
+
+        .contador-favs {
+            display: inline-block;
+            margin: 0.2rem 0px;
+        }
+    }
+
+}
+
+.listado-posteos {
+    margin: 1rem auto;
+    width: 90%;
+    max-width: 35rem;
+}

@@ -1,0 +1,31 @@
+ion-content {
+    overflow: hidden;
+}
+
+.wrapper-botones {
+    width: 100%;
+    height: 100%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.boton-opcion {
+    align-self: stretch;
+    height: 100%;
+}
+
+
+.btn-cosas-lindas {
+    background-image: url('../../../assets/app/gusto.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.btn-cosas-feas {
+    background-image: url('../../../assets/app/disgusto.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}

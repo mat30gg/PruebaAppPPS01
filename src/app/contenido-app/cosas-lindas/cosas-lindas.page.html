@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true">
+  <app-listado-posteos [publicaciones$]="this.publicaciones$"></app-listado-posteos>
+
+  <div *ngIf="this.verVentanaConfirmacion.getValue()" class="container-fondo">
+    <div class="container-confirmacion center">
+      <div *ngIf="this.loadingSubiendoFoto" class="spinner">
+        <ion-spinner name="dots"></ion-spinner>
+      </div>
+      <div class="cuadro-imagen-confirmacion">
+        <div *ngIf="!this.flagImagenCargo" class="spinner">
+          <ion-spinner name="dots"></ion-spinner>
+        </div>
+        <ion-img 
+        [src]="this.nuevoPostImagen?.webPath" 
+        class="imagen-subida" 
+        (ionImgDidLoad)="this.flagImagenCargo = true" 
+        (ionError)="this.imagenNoCargo"></ion-img>
+      </div>
+      <div class="cuadro-texto-confirmacion">
+        <ion-input label="Comentario (opcional)" labelPlacement="stacked" [(ngModel)]="this.comentario"></ion-input>
+      </div>
+      <div class="cuadro-botones-confirmacion">
+        <ion-button (click)="nuevoPost()">Confirmar</ion-button>
+        <ion-button (click)="finalizarSubida()" color="danger">Cancelar</ion-button>
+      </div>
+    </div>
+  </div>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="tomarFoto()" [disabled]="this.verVentanaConfirmacion.getValue()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

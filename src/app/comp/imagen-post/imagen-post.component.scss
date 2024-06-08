@@ -1,0 +1,14 @@
+.contenedor {
+    outline: 0.01rem solid rgb(0, 0, 0);
+    margin: auto;
+    margin-top: 0.7rem;
+    margin-bottom: 1.4rem;
+    
+    .spinner {
+        height: 26rem;
+    }
+
+    ion-img::part(image) {
+        max-height: 26rem;
+    }
+}

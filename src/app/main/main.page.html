@@ -1,28 +1,55 @@
 <ion-menu contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>{{ this.authService.userLogged?.displayName }}</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-content>
+    <ion-item>
+      <ng-container *ngIf="this.authService.userLogged ; else elseUserLogged" >
+        <ion-button fill="clear" (click)="this.logout()">Cerrar sesion</ion-button>
+      </ng-container>
+      <ng-template #elseUserLogged>
+        <ion-button routerLink="/login">Iniciar sesion</ion-button>
+      </ng-template>
+    </ion-item>
+  </ion-content>
 </ion-menu>
 
 <div class="ion-page" id="main-content">
   <ion-header [translucent]="true">
+
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
-        <div *ngIf="this.firebaseAuthService.getFirebaseUser()" >
-          <ion-button (click)="this.logout()">Cerrar sesion</ion-button>
-        </div>
       </ion-buttons>
-      <ion-title>Pagina principal de {{ this.firebaseAuthService.userLogged?.displayName }}</ion-title>
+      <ion-title slot="primary">
+        Relevamiento visual
+      </ion-title>
     </ion-toolbar>
+
   </ion-header>
-  
-  <ion-content [fullscreen]="true">
-    <ion-text class="title">
-      <h1>Bienvenido</h1>
-      <h4>{{this.firebaseAuthService.userLogged?.displayName}}</h4>
-    </ion-text>
+  <ion-content>
+    <ion-tabs>
+
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="principal">
+          <ion-icon name="home"></ion-icon>
+          Inicio
+        </ion-tab-button>
+
+        <ion-tab-button tab="estadisticas">
+          <ion-icon name="stats-chart"></ion-icon> 
+          Estadisticas
+        </ion-tab-button>
+
+        <ion-tab-button tab="misposts">
+          <ion-icon name="images"></ion-icon>
+          Mis fotos
+        </ion-tab-button>
+      </ion-tab-bar>
+
+    </ion-tabs>
   </ion-content>
 </div>
+

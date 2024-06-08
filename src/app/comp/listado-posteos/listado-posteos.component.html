@@ -1,0 +1,22 @@
+<div class="listado-posteos" *ngIf="this.publicaciones$">
+  
+  <ng-container *ngFor="let post of this.publicaciones$ | async; trackBy: trackPosts" >
+    
+    <div class="unidad-posteo">
+      <ion-text>
+        <b>{{post.usuario}} - {{post.fecha | date:'short'}}</b>
+      </ion-text>
+      <div class="container-imagen-post">
+        <app-imagen-post [url]="post.imagenUrl" ></app-imagen-post>
+        <div class="sector-fav">
+          <ion-button class="boton-favorito" fill="clear" shape="round" (click)="darLike(this.post)">
+            <ion-icon slot="icon-only" name="star" [appFavorito]="tieneLike(post)"></ion-icon>
+          </ion-button>
+          <ng-container *ngIf="verLikes"><span class="contador-favs">{{post.conteoFav}}</span></ng-container>
+        </div>
+      </div>
+      <ion-text class="comentario">{{post.comentario}}</ion-text>
+      
+    </div>
+  </ng-container>
+</div>

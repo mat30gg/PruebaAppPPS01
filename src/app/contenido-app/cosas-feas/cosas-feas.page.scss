@@ -1,0 +1,57 @@
+.container-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.container-confirmacion {
+    width: 90%;
+    height: auto;
+    max-width: 25rem;
+    padding: 0.5rem;
+    background-color: var(--ion-color-dark);
+}
+
+
+
+.cuadro-imagen-confirmacion {
+    margin: 0.5rem auto 1rem;
+    position: sticky;
+
+    ion-img {
+        outline: 0.01rem solid rgb(0, 0, 0);
+        margin: auto;
+        margin-top: 0.7rem;
+        margin-bottom: 1.4rem;
+    }
+
+    ion-img::part(image) {
+        max-height: 14rem;
+    }
+}
+
+.imagen-subida {
+    max-width: 25rem;
+    height: auto;
+}
+
+.cuadro-texto-confirmacion {
+    margin: 1rem auto;
+}
+
+.cuadro-botones-confirmacion {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto 0.5rem;
+    max-width: 100%;
+}
+
+.listado-posteos {
+    margin: 1rem auto;
+    width: 90%;
+    max-width: 35rem;
+}

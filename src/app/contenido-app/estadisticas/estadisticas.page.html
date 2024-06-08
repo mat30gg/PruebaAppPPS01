@@ -1,0 +1,17 @@
+<ion-toolbar>
+  <ion-segment [(ngModel)]="tabSeleccionada">
+    <ion-segment-button value="cosas_lindas">
+      <ion-label>Cosas lindas</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="cosas_feas">
+      <ion-label>Cosas feas</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+<ng-container *ngIf="tabSeleccionada === 'cosas_lindas'; else estadisticasCosasFeasTemplate">
+  <app-rueda></app-rueda>
+</ng-container>
+<ng-template #estadisticasCosasFeasTemplate>
+  <app-barras></app-barras>
+</ng-template>

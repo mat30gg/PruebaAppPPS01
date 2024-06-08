@@ -1,7 +1,22 @@
-.form-login {
-    background-color: var(--ion-color-primary);
+.form-box {
+    justify-items: center;
     padding: 5%;
-    border-radius: 5%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+
+    ion-input {
+        text-align: initial;
+    }
+}
+
+.titulo {
+    font-weight: bold;
+    font-size: 1.6rem;
 }
 
 .contenido-login {
@@ -15,4 +30,8 @@
 
 ion-fab {
     margin-bottom: var(--ion-safe-area-bottom, 0);
+
+    ion-icon {
+        color: var(--ion-color-dark)
+    }
 }

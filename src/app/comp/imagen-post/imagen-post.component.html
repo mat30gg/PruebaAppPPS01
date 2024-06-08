@@ -1,0 +1,4 @@
+<div class="contenedor">
+  <div class="spinner" *ngIf="cargando"><ion-spinner color="primary"></ion-spinner></div>
+  <ion-img [src]="url" (ionImgWillLoad)="cargando = true" (ionImgDidLoad)="cargando = false"></ion-img>
+</div>

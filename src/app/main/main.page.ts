@@ -10,8 +10,10 @@ import { Auth, getAuth, updateCurrentUser, updateProfile } from '@angular/fire/a
 })
 export class MainPage implements OnInit {
 
+  public nuevoNombre: string = this.authService.userLogged?.displayName ?? '';
+
   constructor( 
-    public firebaseAuthService: FirebaseAuthService,
+    public authService: FirebaseAuthService,
     public router: Router
   ) { }
 
@@ -20,8 +22,15 @@ export class MainPage implements OnInit {
   }
   
   logout() {
-    this.firebaseAuthService.logout()
-    this.router.navigateByUrl('')
+    this.authService.logout()
+    this.router.navigateByUrl('/login')
+  }
+
+  cambiarNombre() {
+    if( this.authService.userLogged)
+      updateProfile(this.authService.userLogged, {displayName: this.nuevoNombre })
+      .then(() => { console.log("Nombre cambiado con exito") })
+      .catch((error) => { console.log("error: ", error) })
   }
 
 }

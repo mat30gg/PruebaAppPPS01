@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { userLoggedGuard } from './guards/user-logged.guard';
+import { MainPage } from './main/main.page';
 
 const routes: Routes = [
   {
@@ -16,14 +17,17 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'main',
+    path: '',
     canActivate: [userLoggedGuard],
-    loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
+    loadChildren : () => import('./main/main.module').then( m => m.MainPageModule)
   },
   {
-    path: '',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   },
+
+
 ];
 @NgModule({
   imports: [
