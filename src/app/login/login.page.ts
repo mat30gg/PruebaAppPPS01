@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, user } from '@angular/fire/auth';
+import { setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SplashScreen } from '@capacitor/splash-screen';
@@ -14,52 +15,61 @@ import { FirebaseError } from '@angular/fire/app';
 })
 export class LoginPage {
 
+  public cargandoLogin = false
+
   formlogin : FormGroup
 
   usersArray:any[] = [];
 
   public logged : boolean
 
-  public alertMessage : string
-  public alertOpen : boolean
   public alertButtons : Array<any> = []
 
 
   constructor(
     private auth : Auth, 
     private router : Router,
-    private fireAuthServ: FirebaseAuthService,
     private _snackBar: MatSnackBar
   ) {
     let formbuilder = new FormBuilder()
     this.formlogin = formbuilder.group({
-      email: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
       pass: ["", Validators.required]
     })
     this.logged = false
-
-    this.alertMessage = ""
-    this.alertOpen = false
   }
 
   async login() {
     let email = this.formlogin.get('email')?.value
     let pass = this.formlogin.get('pass')?.value
     try {
+      this.cargandoLogin = true
+      await setPersistence(this.auth, browserLocalPersistence)
       await signInWithEmailAndPassword(this.auth, email, pass)
       this._snackBar.open("Iniciando sesion...",'', {
         duration: 2000,
         panelClass: ['snackbar-success']
       })
       setTimeout(() => {
-        this.router.navigate(['main'])
+        this.router.navigate([''])
+        this.formlogin.reset({email: '', pass: ''})
       }, 2000);
     } catch (error : any) {
+      console.log(error);
       this._snackBar.open("Credenciales incorrectas",'', {
         duration: 2000,
         panelClass: ['snackbar-danger']
       })
+    } finally {
+      this.cargandoLogin = false
     }
+  }
+
+  cargarDatosPrueba(email: string, pass: string) {
+    this.formlogin.setValue({
+      email: email,
+      pass: pass
+    })
   }
 
 }

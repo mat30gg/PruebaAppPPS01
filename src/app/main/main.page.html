@@ -1,27 +1,18 @@
-<ion-menu contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-menu>
 <div class="ion-page" id="main-content">
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-          <div *ngIf="this.firebaseAuthService.getFirebaseUser()" >
-            <ion-button (click)="this.firebaseAuthService.logout()">Cerrar sesion</ion-button>
-          </div>
+      <ion-buttons slot="end">
+        <ng-container *ngIf="this.firebaseAuthService.getFirebaseUser()" >
+          <ion-button (click)="this.logout()">Cerrar sesion</ion-button>
+        </ng-container>
       </ion-buttons>
-      <ion-title>Pagina principal de {{ this.firebaseAuthService.userLogged?.displayName }}</ion-title>
     </ion-toolbar>
   </ion-header>
   
   <ion-content [fullscreen]="true">
-    <ion-text class="title">
-      <h1>Bienvenido</h1>
-      <h4>{{this.firebaseAuthService.userLogged?.displayName}}</h4>
-    </ion-text>
+    <div class="contenedor-botones">
+      <ion-button class="boton-sala flex-110 diva" routerLink="chat/pps4a" (click)="this.temaSala.temaActual = '#6C698D'">PPS-4A</ion-button>
+      <ion-button class="boton-sala flex-110 divb" routerLink="chat/pps4b" (click)="this.temaSala.temaActual = '#00A676'">PPS-4B</ion-button>
+    </div>
   </ion-content>
 </div>

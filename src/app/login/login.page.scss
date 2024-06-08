@@ -1,7 +1,23 @@
-.form-login {
-    background-color: var(--ion-color-primary);
+.container-contenido::part(background){
+    background-color: #010120;
+    opacity: 1;
+    background: repeating-linear-gradient( -45deg, #11144c, #11144c 6.5px, #010120 6.5px, #010120 32.5px );
+}
+
+.form-box {
+    justify-items: center;
     padding: 5%;
-    border-radius: 5%;
+}
+
+.box {
+    background: radial-gradient(#0d0d7f, #010120);
+    box-shadow: inset 10px 10px 16px 8px #01011a, 0px 0px 18px 20px #04043e;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .contenido-login {
@@ -11,4 +27,13 @@
     max-width: 86%;
     top: 50%;
     transform: translate(0, -50%);
+}
+
+.boton-login {
+    padding: auto 3rem;
+    margin: auto;
+}
+
+ion-fab {
+    margin-bottom: var(--ion-safe-area-bottom, 0);
 }

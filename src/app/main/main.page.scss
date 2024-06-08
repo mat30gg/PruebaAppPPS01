@@ -1,0 +1,22 @@
+.contenedor-botones {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.flex-110 {
+    flex: 1 1 0;
+}
+
+.boton-sala {
+    font-size: xxx-large;
+}
+
+.diva {
+    --background: #6C698D;
+}
+
+.divb {
+    --background: #00A676;
+}

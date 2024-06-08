@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseAuthService } from '../services/firebase-auth.service';
 import { Router } from '@angular/router';
 import { Auth, getAuth, updateCurrentUser, updateProfile } from '@angular/fire/auth';
+import { TemaSalaService } from '../services/tema-sala.service';
 
 @Component({
   selector: 'app-main',
@@ -14,19 +15,17 @@ export class MainPage implements OnInit {
 
   constructor( 
     public firebaseAuthService: FirebaseAuthService,
-    public router: Router
+    public router: Router,
+    public temaSala: TemaSalaService
   ) { }
 
   ngOnInit() {
-    if( !this.firebaseAuthService.getFirebaseUser() ) {
-      this.router.navigateByUrl('')
-    } else {
-      this.router.navigateByUrl('main')
-    }
+    return
   }
   
   logout() {
     this.firebaseAuthService.logout()
+    this.router.navigateByUrl('login')
   }
 
 }

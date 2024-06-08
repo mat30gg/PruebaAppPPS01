@@ -4,27 +4,58 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="container-contenido">
 
   <div class="contenido-login">
-    <div class="form-login">
-      <form [formGroup]="this.formlogin">
-        <ion-input label="E-Mail" type="email" formControlName="email"></ion-input>
-        <ion-input label="Clave" type="password" formControlName="pass"></ion-input>
-      </form>
-      <ion-button (click)="login()" [disabled]="this.formlogin.invalid" color="secondary">Iniciar sesion</ion-button>
+    <div  *ngIf=" this.cargandoLogin" class="spinner">
+      <ion-spinner color="dark"></ion-spinner>
     </div>
-  
-    <ion-text>
-      No tienes cuenta? 
-      <a routerLink="/register">registrate</a>
-    </ion-text>
+    <div class="form-box box">
+      <form [formGroup]="this.formlogin" class="form">
+        <ion-input 
+        label="Correo" 
+        labelPlacement="stacked"
+        type="email" 
+        helperText="Ingrese correo valido" 
+        errorText="Correo invalido" 
+        fill="outline"
+        formControlName="email"
+        >
+          <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
+        </ion-input>
+        <ion-input 
+        label="Clave" 
+        labelPlacement="stacked"
+        type="password" 
+        fill="outline"
+        formControlName="pass"
+        >
+          <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
+        <ion-button (click)="login()" [disabled]="this.formlogin.invalid" color="primary" class="boton-login">Iniciar sesion</ion-button>
+        <ion-text>
+          No tienes cuenta? 
+          <a routerLink="/register">registrate</a>
+        </ion-text>
+      </form>
+    </div>
   </div>
 
-  <ion-alert
-    [isOpen]="alertOpen"
-    message="{{alertMessage}}"
-    [buttons]="alertButtons"
-    (didDismiss)="alertOpen = false"
-  ></ion-alert>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="bug-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="cargarDatosPrueba('usuario@usuario.com', '333333')">
+        <ion-icon name="person"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="cargarDatosPrueba('admin@admin.com', '111111')">
+        <ion-icon name="person"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="cargarDatosPrueba('invitado@invitado.com', '222222')">
+        <ion-icon name="person"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

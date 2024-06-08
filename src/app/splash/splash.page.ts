@@ -15,9 +15,9 @@ export class SplashPage implements OnInit {
   ) { 
     setTimeout(() => {
       if( this.firebaseAuthService.getFirebaseUser() ) {
-        router.navigateByUrl('/main')
+        router.navigateByUrl('')
       } else {
-        router.navigateByUrl('');
+        router.navigateByUrl('/login');
       }
     }, 3500)
   }

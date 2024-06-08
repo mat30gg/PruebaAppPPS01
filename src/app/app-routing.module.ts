@@ -16,13 +16,18 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'main',
-    canActivate: [userLoggedGuard],
-    loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
-  },
-  {
     path: '',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    canActivate: [userLoggedGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
+      },
+      {
+        path: 'chat/:idsala',
+        loadChildren: () => import('./contenido-app/sala-chat/sala-chat.module').then( m => m.SalaChatPageModule)
+      }
+    ]
   },
 ];
 @NgModule({
