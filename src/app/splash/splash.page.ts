@@ -13,17 +13,16 @@ export class SplashPage implements OnInit {
     public router: Router,
     public firebaseAuthService: FirebaseAuthService
   ) { 
+  }
+  
+  ngOnInit() {
     setTimeout(() => {
       if( this.firebaseAuthService.getFirebaseUser() ) {
-        router.navigateByUrl('/main')
+        this.router.navigateByUrl('/main')
       } else {
-        router.navigateByUrl('');
+        this.router.navigateByUrl('/login');
       }
     }, 3500)
-  }
-
-  ngOnInit() {
-    return
   }
 
 }

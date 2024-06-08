@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FirebaseAuthService } from '../services/firebase-auth.service';
 import { Router } from '@angular/router';
 import { Auth, getAuth, updateCurrentUser, updateProfile } from '@angular/fire/auth';
+import { AlarmaActivaService } from '../alarma-activa.service';
 
 @Component({
   selector: 'app-main',
@@ -11,22 +12,27 @@ import { Auth, getAuth, updateCurrentUser, updateProfile } from '@angular/fire/a
 export class MainPage implements OnInit {
 
   public nombre = "";
+  public logoutHabilitado = true
 
   constructor( 
     public firebaseAuthService: FirebaseAuthService,
-    public router: Router
-  ) { }
+    public router: Router,
+    public alarmaActiva: AlarmaActivaService,
+    public changeDetectorRef: ChangeDetectorRef
+  ) { 
+    this.alarmaActiva.activada$.subscribe((value) => {
+      this.logoutHabilitado = value;
+      changeDetectorRef.detectChanges()
+    })
+  }
 
   ngOnInit() {
-    if( !this.firebaseAuthService.getFirebaseUser() ) {
-      this.router.navigateByUrl('')
-    } else {
-      this.router.navigateByUrl('main')
-    }
+    return
   }
   
   logout() {
     this.firebaseAuthService.logout()
+    this.router.navigateByUrl('/login')
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { Router } from '@angular/router';
-import { Auth, onAuthStateChanged } from '@angular/fire/auth';
+import { Auth, inMemoryPersistence, onAuthStateChanged } from '@angular/fire/auth';
 import { FirebaseAuthService } from './services/firebase-auth.service';
 
 

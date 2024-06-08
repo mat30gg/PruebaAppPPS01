@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { userLoggedGuard } from './guards/user-logged.guard';
+import { MainPage } from './main/main.page';
 
 const routes: Routes = [
   {
@@ -17,13 +18,39 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    canActivate: [userLoggedGuard],
-    loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
+    redirectTo: 'main/boton-alarma'
+  },
+  {
+    path: 'main',
+    component: MainPage,
+    canActivateChild: [userLoggedGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./main/main.module').then( m => m.MainPageModule )
+      },
+      {
+        path: 'boton-alarma',
+        children: [
+          {
+            path: '',
+            outlet: 'contenido-app',
+            loadChildren: () => import('./contenido-app/boton-alarma/boton-alarma.module').then( m => m.BotonAlarmaPageModule)
+          }
+        ]
+      }
+    ]
   },
   {
     path: '',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    redirectTo: 'splash',
+    pathMatch: 'full'
   },
+  {
+    path: '**',
+    redirectTo: 'splash'
+  }
+
 ];
 @NgModule({
   imports: [

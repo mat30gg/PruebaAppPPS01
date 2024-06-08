@@ -1,7 +1,28 @@
-.form-login {
-    background-color: var(--ion-color-primary);
+.form-box {
+    justify-items: center;
     padding: 5%;
-    border-radius: 5%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+
+.box {
+    animation: miAnimacionCaja 10s linear infinite;
+}
+
+@keyframes miAnimacionCaja {
+    0% {box-shadow: 1px -10px 20px 8px #0b0811;}
+    20% {box-shadow: 1px -10px 20px 10px hsl(188, 100%, 24%);}
+    30% {box-shadow: 1px -10px 20px 12px hsl(188, 100%, 35%);}
+    40% {box-shadow: 1px -10px 20px 10px hsl(188, 100%, 24%);}
+    60% {box-shadow: 1px -10px 20px 8px hsl(188, 100%, 17%);}
+    80% {box-shadow: 1px -10px 20px 6px hsl(188, 100%, 8%);}
+    90% {box-shadow: 1px -10px 20px 7px hsl(188, 100%, 12%);}
+    100% {box-shadow: 1px -10px 20px 8px #0b0811;}
 }
 
 .contenido-login {
@@ -11,4 +32,13 @@
     max-width: 86%;
     top: 50%;
     transform: translate(0, -50%);
+}
+
+.boton-login {
+    padding: auto 3rem;
+    margin: auto;
+}
+
+ion-fab {
+    margin-bottom: var(--ion-safe-area-bottom, 0);
 }
